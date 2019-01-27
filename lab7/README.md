@@ -19,8 +19,15 @@ Printf vulnerability
 ```
 
 ## Solution
-1.Use printf to modify password to v
+### Method1
+1.Use printf to overwrite password to v
 2.we can use exp generator `pwnlib.fmtstr.fmtstr_payload(offset, writes, numbwritten=0, write_size='byte')`
-3.Pass check and get shell
+3.Input v , pass check and get flag
 
-Script [solve.py](./solve.py)
+Script [solve.py](./solve_overwrite.py)
+
+### Method2
+1.Use printf to leak password
+2.Input password , pass check and get flag.
+
+Script [solve.py](./solve_leak.py)
