@@ -43,5 +43,16 @@ Heap overflow vulnerability in change in add
 3.The next malloc will reuse the beginning of the heap,which is the bamboo box
 4.Then modify the bamboo box's function pointer to magic
 
-
 Script [solve.py](./solve_house_of_force.py)
+
+## Solution2
+1.Use heap overflow to create a fake free bin
+2.Set the fake bin's fd and bk to pass checks when consolidate
+3.Free a chunk to trigger unlink
+4.The unlink process creates a ptr which points to other ptr
+5.Do arbitrary Read/Write through the ptr
+6.Leak libc and overwrite got table to get shell
+
+
+Script [solve.py](./solve_unlink.py)
+
